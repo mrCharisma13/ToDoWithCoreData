@@ -10,16 +10,17 @@ import CoreData
 
 class CoreDataManager {
     static let instance = CoreDataManager()
-    let cantainer: NSPersistentContainer
+    let container: NSPersistentContainer
     let context: NSManagedObjectContext
+    let containerName = "TasksContainer"
     
     init() {
-        cantainer = NSPersistentContainer(name: "TasksContainer")
-        cantainer.loadPersistentStores { description, error in
+        container = NSPersistentContainer(name: containerName)
+        container.loadPersistentStores { description, error in
             if let error = error {
                 print("Error: \(error)")
             }
         }
-        context = cantainer.viewContext
+        context = container.viewContext
     }
 }

@@ -29,19 +29,19 @@ class ListViewModel: ObservableObject {
     func deleteTask(indexSet: IndexSet) {
         guard let index = indexSet.first else {return}
         let entity = tasks[index]
-        manager.cantainer.viewContext.delete(entity)
+        manager.container.viewContext.delete(entity)
         saveData()
     }
     
     func addTask(task: String) {
-        let newTask = TaskEntity(context: manager.cantainer.viewContext)
+        let newTask = TaskEntity(context: manager.container.viewContext)
         newTask.task = task
         saveData()
     }
     
     func saveData() {
         do {
-            try manager.cantainer.viewContext.save()
+            try manager.container.viewContext.save()
             getTasks()
         } catch let error {
             print("Error: \(error)")
