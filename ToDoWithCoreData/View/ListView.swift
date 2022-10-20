@@ -22,7 +22,7 @@ struct ListView: View {
                 
                 List {
                     ForEach(taskViewModel.tasks) { toDo in
-                        Text(toDo.task ?? "no name")
+                        Text(toDo.task ?? "No tasks")
                     }
                     .onDelete(perform: taskViewModel.deleteTask)
                 }
